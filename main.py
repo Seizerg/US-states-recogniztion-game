@@ -17,10 +17,7 @@ while gameIsOn:
     input = screen.textinput(title=f"Your Guessed {num}/50 US States",
                              prompt="Enter a US state write on the map").title()
     if input == "Exit":
-        missing_states=[]
-        for state in state_list:
-            if state not in present_states:
-                missing_states.append(state)
+        missing_states=[state for state in state_list if state not in present_states]
         new_data= pandas.DataFrame(missing_states)
         new_data.to_csv("missing-states.csv")
         gameIsOn = False
